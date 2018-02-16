@@ -35,23 +35,25 @@ public class Runner {
 
 		sg.addStudent(s5);
 
-		sg.numberOfEntriesInTheYear(2007);
-
-		sg.infoAboutFrequentYear();
-
+		// sg.numberOfEntriesInTheYear(2007);
+		//
+		// sg.infoAboutFrequentYear();
+		//
+		// sg.groupInfo();
+		//
+		// sg.bubbleSortByYearOfAdmission();
+		//
+		// System.out.println("____");
+		//
+		// sg.groupInfo();
+		//
+		// sg.bubbleSortByStudentsAge();
+		//
+		// System.out.println("____");
+		// sg.groupInfo();
+		sg.insertIntoSort();
 		sg.groupInfo();
-
-		sg.bubbleSortByYearOfAdmission();
-
-		System.out.println("____");
-
-		sg.groupInfo();
-
-		sg.bubbleSortByStudentsAge();
-
-		System.out.println("____");
-		sg.groupInfo();
-
+		System.out.println("__________");
 	}
 
 }

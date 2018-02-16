@@ -63,8 +63,7 @@ public class StudentsGroup {
 				}
 			}
 			int averageAge = age / studentCount;
-			System.out.println("Average age of the students in the group "
-					+ groupNumber + " is " + averageAge);
+			System.out.println("Average age of the students in the group " + groupNumber + " is " + averageAge);
 		} else {
 			System.out.println("There are not enough students in the group");
 		}
@@ -81,8 +80,7 @@ public class StudentsGroup {
 				}
 			}
 		}
-		System.out.println("The number of enrolled students in " + year
-				+ " is " + yearCount);
+		System.out.println("The number of enrolled students in " + year + " is " + yearCount);
 	}
 
 	private int frequentYear() {
@@ -123,8 +121,7 @@ public class StudentsGroup {
 			for (int i = students.length - 1; i > 0; i--) {
 				for (int j = 0; j < i; j++) {
 					if (students[j] != null & students[j + 1] != null) {
-						if (students[j].getYearOfAdmission() > students[j + 1]
-								.getYearOfAdmission()) {
+						if (students[j].getYearOfAdmission() > students[j + 1].getYearOfAdmission()) {
 							Student s = students[j];
 							students[j] = students[j + 1];
 							students[j + 1] = s;
@@ -140,10 +137,7 @@ public class StudentsGroup {
 			System.out.println("Group ¹ " + groupNumber);
 			for (Student s : students) {
 				if (s != null) {
-					System.out
-							.println(s.getStudentName() + " "
-									+ s.getStudentsAge() + " "
-									+ s.getYearOfAdmission());
+					System.out.println(s.getStudentName() + " " + s.getStudentsAge() + " " + s.getYearOfAdmission());
 				}
 			}
 		}
@@ -154,14 +148,66 @@ public class StudentsGroup {
 			for (int i = students.length - 1; i > 0; i--) {
 				for (int j = 0; j < i; j++) {
 					if (students[j] != null & students[j + 1] != null) {
-						if (students[j].getStudentsAge() > students[j + 1]
-								.getStudentsAge()) {
+						if (students[j].getStudentsAge() > students[j + 1].getStudentsAge()) {
 							Student s = students[j];
 							students[j] = students[j + 1];
 							students[j + 1] = s;
 						}
 					}
 				}
+			}
+		}
+	}
+
+	public void quickSort() {
+		int start = 0;
+		int end = students.length - 1;
+		doSort(start, end);
+	}
+
+	private void doSort(int start, int end) {
+		if (start >= end) {
+			return;
+		}
+		int i = start;
+		int j = end;
+		int mid = (i + j) / 2;
+		while (i < j) {
+			while (i < mid && students[i].getStudentsAge() <= students[mid].getStudentsAge()) {
+				i++;
+			}
+			while (j > mid && students[mid].getStudentsAge() <= students[j].getStudentsAge()) {
+				j--;
+			}
+			if (i < j) {
+				Student temp = students[i];
+				students[i] = students[j];
+				students[j] = temp;
+				if (i == mid) {
+					mid = j;
+				}
+				if (j == mid) {
+					mid = i;
+				}
+			}
+		}
+		doSort(start, mid);
+		doSort(mid + 1, end);
+	}
+
+	public void insertIntoSort() {
+		Student temp;
+		int j = 0;
+		for (int i = 0; i < students.length - 1; i++) {
+			if (students[i].getStudentsAge() > students[i + 1].getStudentsAge()) {
+				temp = students[i + 1];
+				students[i + 1] = students[i];
+				j = i;
+				while (j > 0 && temp.getStudentsAge() < students[j - 1].getStudentsAge()) {
+					students[j] = students[j - 1];
+					j--;
+				}
+				students[j] = temp;
 			}
 		}
 	}
